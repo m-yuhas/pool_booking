@@ -1,0 +1,33 @@
+[build-system]
+requires = [ "setuptools >= 35.0.2", "wheel >= 0.29.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+envlist = py36,py36,py37,py38,py39
+
+[gh-actions]
+python =
+    3.6: py36
+    3.7: py37
+    3.8: py38
+    3.9: py39
+
+[testenv]
+deps = bs4
+       coverage
+       pycodestyle
+       pydoc-markdown==2.1.3
+       pylint
+       requests
+commands = pycodestyle pool_booking test setup.py
+           pylint --disable=E1101 pool_booking test setup.py
+           coverage run --source=pool_booking -m unittest discover
+           coverage report -m
+           python setup.py sdist
+           bash -c 'pydocmd simple pool_booking++ \
+             pool_booking.booking++ pool_booking.booking.BookingError++ \
+             pool_booking.booking.Booker++ > doc/api_documentation.md'
+whitelist_externals = /bin/bash
+"""
