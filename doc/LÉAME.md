@@ -1,64 +1,107 @@
-# Pool Booking
+# Reserva de Piscina
 
-## Introduction
-This Python package simplifies the NTU pool booking process.  For those of use who swim everyday and don't change our schedules from week to week, we wish there was someway to just specify in advance the times we want and not have to login everyday to find a spot.  This package reads a predefined weekly schedule from a CSV file and attempts to book those slots at the pool when available.
+## Introducción
+Este paquete Python simplifica el proceso de reserva de piscina de NTU.  A
+nosotros quiénes nadamos cada día y no cambiamos nuestros horarios entre
+semanas, deseamos que haya alguna manera para especificar de antemano los
+tiempos que queramos reservar y que no necesitemos manualmente ingresar cada
+día para encontrar un lugar.  Este paquete lee un horario predefinido semanal
+de un archivo CSV y intenta reservar aquellos huecos a la piscina si están
+disponibles.
 
-## Quick Start
+## Comienzo Rápido
 
-### Optional: Setup a Virtual Environment
-If you haven't already done so, setting up virtual environments can help ensure that this package does not interfere with other python packages you may already have installed on your system.  There are many virtual environment managers for Python (venv)[https://docs.python.org/3/library/venv.html], (Virtualenv)[https://docs.python.org/3/library/venv.html], (Pipenv)[https://pipenv.pypa.io/en/latest/], (Conda)[https://docs.conda.io/en/latest/], and (Poetry)[https://python-poetry.org].  These steps instructions will walk you through the process on Pipenv:
+### Opcional: Establecer un Ambiento Virtual
+Si todavía no hizo así, estableciendo un ambiento virtual puede ayudar asegurar
+que este paquete no interfiera con otros paquetes Python que ya habría podido
+instalado en su sistema.  Hay muchos gerentes de ambientos virtuales para
+Python, por ejemplo: [venv](https://docs.python.org/3/library/venv.html),
+[Virtualenv](https://docs.python.org/3/library/venv.html),
+[Pipenv](https://pipenv.pypa.io/en/latest/),
+[Conda](https://docs.conda.io/en/latest/), y
+[Poetry]( yhttps://python-poetry.org).  Estas instrucciones explicarán el
+proceso en Pipenv, pero puede usar alguno de los gerentes de ambientos
+virtuales susodichos:
 
-1. Install Pipenv:
+1. Instale Pipenv:
 ```
 pip installl pipenv
 ```
 
-2. Create a new virtual environment and launch it:
+2. Cree un ambiento virtual nuevo y lo lance:
 ```
 pipenv shell
 ```
 
-### Installation
-3. If you are using Pipenv:
+### Instalación
+3. Si usa usted Pipenv:
 ```
 pipenv install git+https://github.com/m-yuhas/pool_booking.git
 ```
 
-4. Otherwise:
+4. De lo contrario:
 ```
 pip install git+https://github.com/m-yuhas/pool_booking.git
 ```
 
-### Running
-5. First take the *times.csv* file present in the root directory of this repository and store it on your computer.  Put an 'X' on each cell when you would like to book a slot at the swimming pool.  (Note: only one booking per day is allowed)
-6. Launch the package from the directory where your *times.csv* file is located:
+### Ejecutar
+5. Primero tome el archivo *times.csv* que se ubica en el directorio raíz de
+  este repositorio y lo cargue en su computadora.  Ponga un 'X' en cada celda
+  cuando quiera reservar aquello hueco a la piscina.  (Note: solo se permite
+  una reserva por día.)  Por ejemplo:
+
+| Tiempo | Lunes | Martes | Miércoles | Jueves | Viernes | Sábado | Domingo |
+|--------|-------|--------|-----------|--------|---------|--------|---------|
+| 0800-0900 | | | | | | | X |
+| 0900-1000 | | X | X | X | X | | |
+| 1000-1100 | | | | | | | |
+| 1100-1200 | | | | | | | |
+| 1200-1300 | | | | | | | |
+| 1300-1400 | | | | | | | |
+| 1400-1500 | | | | | | | |
+| 1500-1600 | | | | | | | |
+| 1600-1700 | | | | | | | |
+| 1700-1800 | | | | | | | |
+| 1800-1900 | | | | | | | |
+| 1900-2000 | X | | | | | X | |
+
+6. Lance el paquete del directorio dónde se ubica su archivo de *times.csv*:
 ```
 python -m pool_booking times.csv
 ```
 
-7. Enter you username, password, and matriculation number and the script will begin running.
-8. Because this script runs for prolonged periods of time, you may want to launch it with *nohup* so it keeps running even after you kill your terminal session
+7. Entre su nombre de usuario, contraseña, y número de matriculación y el
+  script comenzará ejecutar.
+8. Porque este script ejecuta para periodos prolongados, tal vez quiera
+  lancarlo con *nohup* así continuará ejecutar aún después de mata su sesión
+  del terminal.
 ```
 nohup python -m pool_booking times.csv
 ```
 
-9. You can monitor the progress of the script by observing the *pool_booking.log* file it generates in the directory where you launched it:
+9. Puede supervisar el progreso del script en observando el archivo
+  *pool_booking.log* que genera en el directorio en el cual lo lanzó.
 ```
 tail pool_booking.log
 ```
 
-## Dependencies
-Only Python version 3.6 and greater are supported. This package should run on any POSIX system as well as Windows 7 and greater.
+## Dependencias
+Solo las versiones Python 3.6 y arriba están apoyadas.  Este paquete debe poder
+ejecutado en alguno sistema POSIX además de Windows 7 y arriba.
 
-The following packages are used:
+Usa los paquetes siguientes:
 * [beatifulsoup4](https://www.crummy.com/software/BeautifulSoup/)
 * [requests](https://docs.python-requests.org/en/master/)
 
-## Contributing
-Suggestions and pull requests are welcome. If you find a bug and don't have time to fix it yourself, feel free to open an issue.
+## Contribuir
+Sugestiones y pull requests son bienvenidos. Si encuentra un error de
+programación y no tiene el tiempo para arreglarlo su mismo, por supuesto abra
+un asunto en Github.
 
-## Future Tasks
-* Increase unit test coverage:
-  * Figure out how to mock multiple functions in one test
-  * Figure out how to mock built-in functions like datetime.datetime.now()
-* Expand booking capability to other facilities besides the swimming pool.
+## Tareas Futuras
+* Aumentar la cobertura de las pruebas unitarias:
+  * Resolver cómo imitar funciones múltiples en una prueba
+  * Resolver cómo imitar funciones empotradas como datetime.datetime.now()
+* Ampliar la capacidad de reserva a otras facilidades además de la piscina
+* Empujar notificaciones al escritorio en el caso de un éxito o un fracaso
+* Empaquetar como un servicio systemd
