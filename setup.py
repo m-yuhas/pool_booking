@@ -15,7 +15,7 @@ with open(
 
 setup(
     name='pool_booking',
-    version='0.0.0',
+    version='0.0.1',
     author='m-yuhas',
     author_email='m-yuhas@qq.com',
     maintainer='m-yuhas',
