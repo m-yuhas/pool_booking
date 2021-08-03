@@ -52,12 +52,11 @@ def get_next_booking(pref: List[int]) -> datetime.datetime:
     """Given a list of preferred booking times and their days of the week,
     find the next booking that needs to be made."""
     now = datetime.datetime.now()
-    now = now.replace(hour=0, minute=0, second=0, microsecond=0)
     for inc in range(7):
         hours = pref[(now.weekday() + inc) % 7]
         if hours == 0:
             continue
-        candidate = now + datetime.timedelta(days=inc, hours=hours)
+        candidate = now.replace(days=now.days + inc, hours=hours)
         if candidate > now:
             return candidate
     raise Exception('No booking preferences were found.')
