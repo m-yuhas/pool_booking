@@ -36,19 +36,19 @@ pipenv shell
 ### Instalación
 3. Si usa usted Pipenv:
 ```
-pipenv install git+https://github.com/m-yuhas/pool_booking.git
+pipenv install git+https://github.com/m-yuhas/pool_booking.git#egg=pool_booking
 ```
 
 4. De lo contrario:
 ```
-pip install git+https://github.com/m-yuhas/pool_booking.git
+pip install git+https://github.com/m-yuhas/pool_booking.git#egg=pool_booking
 ```
 
 ### Ejecutar
 5. Primero tome el archivo *times.csv* que se ubica en el directorio raíz de
   este repositorio y lo cargue en su computadora.  Ponga un 'X' en cada celda
-  cuando quiera reservar aquello hueco a la piscina.  (Note: solo se permite
-  una reserva por día.)  Por ejemplo:
+  cuando quiera reservar aquello hueco a la piscina.  (Por favor note: solo se
+  permite una reserva por día.)  Por ejemplo:
 
 | Tiempo | Lunes | Martes | Miércoles | Jueves | Viernes | Sábado | Domingo |
 |--------|-------|--------|-----------|--------|---------|--------|---------|
@@ -72,9 +72,9 @@ python -m pool_booking times.csv
 
 7. Entre su nombre de usuario, contraseña, y número de matriculación y el
   script comenzará ejecutar.
-8. Porque este script ejecuta para periodos prolongados, tal vez quiera
+8. Porque este script ejecuta por periodos prolongados, tal vez quiera
   lancarlo con *nohup* así continuará ejecutar aún después de mata su sesión
-  del terminal.
+  del terminal:
 ```
 nohup python -m pool_booking times.csv
 ```

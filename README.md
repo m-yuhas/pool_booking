@@ -17,7 +17,7 @@ the pool if they are available.
 
 ### Optional: Set up a Virtual Environment
 If you haven't already done so, setting up virtual environments can help ensure
-that this package does not interfere with other python packages you may already
+that this package does not interfere with other Python packages you may already
 have installed on your system.  There are many virtual environment managers for
 Python, for example: [venv](https://docs.python.org/3/library/venv.html),
 [Virtualenv](https://docs.python.org/3/library/venv.html),
@@ -40,12 +40,12 @@ pipenv shell
 ### Installation
 3. If you are using Pipenv:
 ```
-pipenv install git+https://github.com/m-yuhas/pool_booking.git
+pipenv install git+https://github.com/m-yuhas/pool_booking.git#egg=pool_booking
 ```
 
 4. Otherwise:
 ```
-pip install git+https://github.com/m-yuhas/pool_booking.git
+pip install git+https://github.com/m-yuhas/pool_booking.git#egg=pool_booking
 ```
 
 ### Running
@@ -79,7 +79,7 @@ python -m pool_booking times.csv
   begin running.
 8. Because this script runs for prolonged periods of time, you may want to
   launch it with *nohup* so it keeps running even after you kill your terminal
-  session.
+  session:
 ```
 nohup python -m pool_booking times.csv
 ```

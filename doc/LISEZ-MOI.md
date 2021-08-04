@@ -12,46 +12,47 @@ si elles sont disponibles.
 ## Lancement Rapide
 
 ### Optionnel: Instaurer un Environnement Virtuel
-If you haven't already done so, setting up virtual environments can help ensure
-that this package does not interfere with other python packages you may already
-have installed on your system.  There are many virtual environment managers for
-Python, for example: [venv](https://docs.python.org/3/library/venv.html),
+Si vous ne l'avez pas déjà fait, mettre en place un environnement virtuel peut
+aider à assurer que ce paquet n'interfère pas avec les autres paquets Python
+que vous auriez pu déjà installés dans votre système.  Il y a beaucoup de
+gestionnaires d'environnements virtuels pour Python, par exemple:
+[venv](https://docs.python.org/3/library/venv.html),
 [Virtualenv](https://docs.python.org/3/library/venv.html),
 [Pipenv](https://pipenv.pypa.io/en/latest/),
-[Conda](https://docs.conda.io/en/latest/), and
-[Poetry](https://python-poetry.org).  These instructions will walk you through
-the process on Pipenv, but you can use any of the aformentioned virtual
-environment managers:
+[Conda](https://docs.conda.io/en/latest/), et
+[Poetry](https://python-poetry.org).  Ces instructions expliqueront le
+processus en utilisant Pipenv, mais vous pouvez utiliser quelconque des
+gestionnaires d'environnements virtuels susmentionnés:
 
-1. Install Pipenv:
+1. Installez Pipenv:
 ```
 pip installl pipenv
 ```
 
-2. Create a new virtual environment and launch it:
+2. Créez un environnement virtuel et le lancez:
 ```
 pipenv shell
 ```
 
 ### Installation
-3. If you are using Pipenv:
+3. Si vous êtes utilisant Pipenv:
 ```
-pipenv install git+https://github.com/m-yuhas/pool_booking.git
+pipenv install git+https://github.com/m-yuhas/pool_booking.git#egg=pool_booking
 ```
 
-4. Otherwise:
+4. Autrement:
 ```
-pip install git+https://github.com/m-yuhas/pool_booking.git
+pip install git+https://github.com/m-yuhas/pool_booking.git#egg=pool_booking
 ```
 
 ### Exploitation
-5. First take the *times.csv* file present in the root directory of this
-  repository and store it on your computer.  Put an 'X' in each cell when you
-  would like to book that slot at the swimming pool.  (Note: only one booking
-  per day is allowed.)  For example:
+5. Première prenez le fichier *times.csv* dans le directoire racine de ce dépôt
+  et l'enregistrez dans votre ordinateur.  Mettez un 'X' dans chaque cellule
+  quand vous voudriez réserver cette place à la piscine. (Veuillez noter:
+  seulement se permet une réservation par jour.)  Par exemple:
 
-| Time | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | Sunday |
-|------|--------|---------|-----------|----------|--------|----------|--------|
+| Temps | Lundi | Mardi | Mercredi | Jeudi | Vendredi | Samedi | Dimanche |
+|-------|-------|-------|----------|-------|----------|--------|----------|
 | 0800-0900 | | | | | | | X |
 | 0900-1000 | | X | X | X | X | | |
 | 1000-1100 | | | | | | | |
@@ -65,43 +66,43 @@ pip install git+https://github.com/m-yuhas/pool_booking.git
 | 1800-1900 | | | | | | | |
 | 1900-2000 | X | | | | | X | |
 
-6. Launch the package from the directory where your *times.csv* file is
-  located:
+6. Lancez le paquet du directoire où se trouve votre fichier *times.csv*:
 ```
 python -m pool_booking times.csv
 ```
 
-7. Enter you username, password, and matriculation number and the script will
-  begin running.
-8. Because this script runs for prolonged periods of time, you may want to
-  launch it with *nohup* so it keeps running even after you kill your terminal
-  session.
+7. Entrez votre nom d'utilisateur, mot de passe, et numéro d'immatriculation et
+  la scripte commencera fonctionner.
+8. Parce que cette script opère pour périodes prolongées, Peut-être que vous la
+  vouliez lancer avec *nohup* afin qu'elle continuera fonctionner même après
+  vous tuez votre session du terminal:
 ```
 nohup python -m pool_booking times.csv
 ```
 
-9. You can monitor the progress of the script by observing the
-  *pool_booking.log* file it generates in the directory where you launched it:
+9. Vous pouvez surveiller le progrès de la script en observant le fichier
+  *pool_booking.log* qu'elle produit dans le directoire où vous l'avez lancé.
 ```
 tail pool_booking.log
 ```
 
 ## Dépendances
-Only Python version 3.6 and greater are supported. This package should run on
-any POSIX system as well as Windows 7 and greater.
+Seulement les versions Python 3.6 et plus sont soutenues.  Ce paquet doit
+pouvoir exploité dans tous les systèmes POSIX aussi bien que Windows 7 et plus.
 
-The following packages are used:
+Les paquets suivants sont utilisés:
 * [beatifulsoup4](https://www.crummy.com/software/BeautifulSoup/)
 * [requests](https://docs.python-requests.org/en/master/)
 
 ## Contribuer
-Suggestions and pull requests are welcome. If you find a bug and don't have
-time to fix it yourself, feel free to open an issue.
+Suggestions et demandes de tirage sont bienvenus.  Si vous trouvez un bogue et
+vous n'avez pas les temps pour la réparer vous-même, n'hesitez pas ouvrir un
+problème.
 
 ## Tâches Futures
-* Increase unit test coverage:
-  * Figure out how to mock multiple functions in one test
-  * Figure out how to mock built-in functions like datetime.datetime.now()
-* Expand booking capability to other facilities besides the swimming pool
-* Push desktop notifications on successful booking or booking failure
-* Package as a systemd service
+* Augmenter la couverture des tests unitaires:
+  * Déterminer comment moquer plusieurs fonctions dans un test
+  * Déterminer comment moquer functions intégrées comme datetime.datetime.now()
+* Accroître la capacité de réservation à autres aménagements en plus de la
+  piscine
+* Emballer comme un service systemd
