@@ -9,5 +9,4 @@ logging.basicConfig(
     format='%(asctime)s [%(threadName)s] [%(levelname)s] %(message)s',
     handlers=[
         logging.FileHandler('pool_booking.log'),
-        logging.StreamHandler()],
-    level=logging.DEBUG)
+        logging.StreamHandler()])

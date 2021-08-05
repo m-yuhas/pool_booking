@@ -15,12 +15,6 @@ import bs4
 import requests
 
 
-ACCEPT = 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
-USERAGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) ' \
-    'AppleWebKit/605.1.15 (KHTML, like Gecko) ' \
-    'Version/14.1.1 Safari/605.1.15'
-
-
 class BookingError(Exception):
     """Exception raised by Booker class when an error occurs during booking due
     to the server not accepting a request."""
@@ -83,7 +77,8 @@ class Booker:
             Dictionary containing the header data for a given request.
         """
         return {
-            'Accept': ACCEPT,
+            'Accept': 'text/html,application/xhtml+xml,application/xml;'
+                      'q=0.9,*/*;q=0.8',
             'Accept-Encoding': 'gzip, deflate, br',
             'Accept-Language': 'en-us',
             'Connection': 'keep-alive',
@@ -91,7 +86,9 @@ class Booker:
             'Content-Type': 'application/x-www-form-urlencoded',
             'Host': 'sso.wis.ntu.edu.sg',
             'Origin': 'https://sso.wis.ntu.edu.sg',
-            'User-Agent': USERAGENT,
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) '
+                          'AppleWebKit/605.1.15 (KHTML, like Gecko) '
+                          'Version/14.1.1 Safari/605.1.15',
             'Cookie': ';'.join(
                 [f'{key}={value}' for key, value in self.cookie_jar.items()])}
 

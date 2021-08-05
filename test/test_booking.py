@@ -72,7 +72,7 @@ def mock_auth_success(url: str, **kwargs) -> MockResponse:
         MockResponse containing a typical example of a response page when
         authentication is successful.
     """
-    response_path = os.path.join('test', 'authentication_success.html')
+    response_path = os.path.join('test_assets', 'authentication_success.html')
     text = ''
     with open(response_path, 'r') as response:
         text = response.read()
@@ -92,7 +92,7 @@ def mock_schedule_fchange(url: str, **kwargs) -> MockResponse:
     Returns:
         MockResponse containing a schedule page with an unknown format.
     """
-    response_path = os.path.join('test', 'schedule_formatchange.html')
+    response_path = os.path.join('test_assets', 'schedule_formatchange.html')
     text = ''
     with open(response_path, 'r') as response:
         text = response.read()
@@ -112,7 +112,7 @@ def mock_schedule_success(url: str, **kwargs) -> MockResponse:
     Returns:
         MockResponse containing a typical example of a schedule page.
     """
-    response_path = os.path.join('test', 'schedule_success.html')
+    response_path = os.path.join('test_assets', 'schedule_success.html')
     text = ''
     with open(response_path, 'r') as response:
         text = response.read()
@@ -136,7 +136,9 @@ def mock_book_invalidaccess(url: str, **kwargs) -> MockResponse:
     """
     text = 'Invalid access.'
     if url.endswith('sel32'):
-        response_path = os.path.join('test', 'confirmation_success.html')
+        response_path = os.path.join(
+            'test_assets',
+            'confirmation_success.html')
         with open(response_path, 'r') as response:
             text = response.read()
     return MockResponse(
@@ -156,7 +158,7 @@ def mock_book_success(url: str, **kwargs) -> MockResponse:
         MockResponse containing successful confirmation and information needed
         for the confirmation.
     """
-    response_path = os.path.join('test', 'confirmation_success.html')
+    response_path = os.path.join('test_assets', 'confirmation_success.html')
     text = ''
     with open(response_path, 'r') as response:
         text = response.read()

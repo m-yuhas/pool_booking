@@ -16,20 +16,20 @@ class TestGetPreferences(unittest.TestCase):
     def test_good_csv(self) -> None:
         """Check that output is correct when parsing a properly formatted
         CSV file."""
-        path = os.path.join('test', 'pass.csv')
+        path = os.path.join('test_assets', 'pass.csv')
         preferences = pool_booking.__main__.get_preferences(path)
         self.assertEqual([0, 8, 8, 8, 8, 0, 8], preferences)
 
     def test_csv_too_many_rows(self) -> None:
         """Check that an exception is raised if the CSV has too many rows."""
-        path = os.path.join('test', 'fail_rows.csv')
+        path = os.path.join('test_assets', 'fail_rows.csv')
         with self.assertRaises(Exception):
             pool_booking.__main__.get_preferences(path)
 
     def test_csv_too_many_columns(self) -> None:
         """Check that an exception is raised if the CSV has too many
         columns."""
-        path = os.path.join('test', 'fail_columns.csv')
+        path = os.path.join('test_assets', 'fail_columns.csv')
         with self.assertRaises(Exception):
             pool_booking.__main__.get_preferences(path)
 

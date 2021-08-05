@@ -73,7 +73,12 @@ def wait_next_booking(next_booking: datetime.date) -> None:
 
 
 def parse_args() -> NamedTuple:
-    """Parse command line arguments."""
+    """Parse command line arguments.
+
+    Returns:
+        NamedTuple containing the name of the schedule file to read and the
+        desired logging level.
+    """
     parser = argparse.ArgumentParser(description='Automate NTU pool booking.')
     parser.add_argument(
         'schedule_file',
